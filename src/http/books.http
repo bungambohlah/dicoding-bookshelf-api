@@ -1,0 +1,34 @@
+# baseURL
+@baseURL = http://localhost:3000
+
+###
+# Find All Books
+GET {{ baseURL }}/books
+
+###
+# Find Book By Id
+GET {{ baseURL }}/books/1
+
+###
+# Create Book
+POST {{ baseURL }}/books
+Content-Type: application/json
+
+{
+    "email": "example@email.com",
+	"password": "password"
+}
+
+###
+# Modify Book By Id
+PUT {{ baseURL }}/books/1
+Content-Type: application/json
+
+{
+    "email": "example@email.com",
+	"password": "password"
+}
+
+###
+# Delete Book By Id
+DELETE {{ baseURL }}/books/1
