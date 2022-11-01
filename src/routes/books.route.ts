@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import BooksController from '@/controllers/books.controller';
-import { CreateBookDto } from '@/dtos/books.dto';
+import { CreateBookDto, UpdateBookDto } from '@/dtos/books.dto';
 import { Routes } from '@interfaces/routes.interface';
 import validationMiddleware from '@middlewares/validation.middleware';
 
@@ -15,10 +15,10 @@ class BookRoute implements Routes {
 
   private initializeRoutes() {
     this.router.get(`${this.path}`, this.booksController.getBooks);
-    this.router.get(`${this.path}/:id(\\d+)`, this.booksController.getBookById);
+    this.router.get(`${this.path}/:id`, this.booksController.getBookById);
     this.router.post(`${this.path}`, validationMiddleware(CreateBookDto, 'body'), this.booksController.createBook);
-    this.router.put(`${this.path}/:id(\\d+)`, validationMiddleware(CreateBookDto, 'body', true), this.booksController.updateBook);
-    this.router.delete(`${this.path}/:id(\\d+)`, this.booksController.deleteBook);
+    this.router.put(`${this.path}/:id`, validationMiddleware(UpdateBookDto, 'body'), this.booksController.updateBook);
+    this.router.delete(`${this.path}/:id`, this.booksController.deleteBook);
   }
 }
 

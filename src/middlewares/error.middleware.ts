@@ -5,12 +5,12 @@ import { logger } from '@utils/logger';
 const errorMiddleware = (error: HttpException, req: Request, res: Response, next: NextFunction) => {
   try {
     const status: number = error.status || 500;
-    const message: string = error.message || 'Something went wrong';
+    const message: string = error.message || 'Buku gagal ditambahkan';
 
     logger.error(`[${req.method}] ${req.path} >> StatusCode:: ${status}, Message:: ${message}`);
-    res.status(status).json({ message });
+    res.status(status).json({ status: 'fail', message });
   } catch (error) {
-    next(error);
+    next(new HttpException(500, 'Buku gagal ditambahkan'));
   }
 };
 

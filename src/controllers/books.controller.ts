@@ -1,6 +1,5 @@
 import { NextFunction, Request, Response } from 'express';
-import { Book } from '@prisma/client';
-import { CreateBookDto } from '@/dtos/books.dto';
+import { Book, Prisma } from '@prisma/client';
 import bookService from '@/services/books.service';
 
 class BooksController {
@@ -8,9 +7,12 @@ class BooksController {
 
   public getBooks = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const findAllBooksData: Book[] = await this.bookService.findAllBook();
+      const findAllBooksData: Book[] = await this.bookService.findAllBook(req.query);
 
-      res.status(200).json({ data: findAllBooksData, message: 'findAll' });
+      res.status(200).json({
+        status: 'success',
+        data: { books: findAllBooksData.map(({ id, name, publisher }) => ({ id, name, publisher })) },
+      });
     } catch (error) {
       next(error);
     }
@@ -21,7 +23,7 @@ class BooksController {
       const bookId = req.params.id;
       const findOneBookData: Book = await this.bookService.findBookById(bookId);
 
-      res.status(200).json({ data: findOneBookData, message: 'findOne' });
+      res.status(200).json({ status: 'success', data: { book: findOneBookData } });
     } catch (error) {
       next(error);
     }
@@ -29,10 +31,10 @@ class BooksController {
 
   public createBook = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
-      const bookData: CreateBookDto = req.body;
+      const bookData: Prisma.BookCreateInput = req.body;
       const createBookData: Book = await this.bookService.createBook(bookData);
 
-      res.status(201).json({ data: createBookData, message: 'created' });
+      res.status(201).json({ status: 'success', data: { bookId: createBookData.id }, message: 'Buku berhasil ditambahkan' });
     } catch (error) {
       next(error);
     }
@@ -41,10 +43,10 @@ class BooksController {
   public updateBook = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const bookId = req.params.id;
-      const bookData: CreateBookDto = req.body;
-      const updateBookData: Book = await this.bookService.updateBook(bookId, bookData);
+      const bookData: Prisma.BookUpdateInput = req.body;
+      await this.bookService.updateBook(bookId, bookData);
 
-      res.status(200).json({ data: updateBookData, message: 'updated' });
+      res.status(200).json({ status: 'success', message: 'Buku berhasil diperbarui' });
     } catch (error) {
       next(error);
     }
@@ -53,9 +55,9 @@ class BooksController {
   public deleteBook = async (req: Request, res: Response, next: NextFunction): Promise<void> => {
     try {
       const bookId = req.params.id;
-      const deleteBookData: Book = await this.bookService.deleteBook(bookId);
+      await this.bookService.deleteBook(bookId);
 
-      res.status(200).json({ data: deleteBookData, message: 'deleted' });
+      res.status(200).json({ status: 'success', message: 'Buku berhasil dihapus' });
     } catch (error) {
       next(error);
     }
