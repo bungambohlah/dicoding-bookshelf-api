@@ -13,14 +13,14 @@ generator client {
 
 model Book {
   id   String @id
-  name String @unique
+  name String
   year Int
   author String
   summary String @db.Text
   publisher String
   pageCount Int
   readPage Int
-  finished Boolean
+  finished Boolean @default(false)
   reading Boolean
   insertedAt DateTime @default(now())
   updatedAt DateTime @default(now())
