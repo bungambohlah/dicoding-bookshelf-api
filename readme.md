@@ -9,6 +9,7 @@ Project ini adalah Submission dari materi [Belajar Membuat Aplikasi Back-End unt
   - [Kriteria](#kriteria)
   - [Pengujian](#pengujian)
     - [Contoh Pengujian Berhasil](#contoh-pengujian-berhasil)
+  - [About Me](#about-me)
   - [LICENSE](#license)
 
 ## Kriteria
@@ -25,11 +26,11 @@ Project ini adalah Submission dari materi [Belajar Membuat Aplikasi Back-End unt
 - Sesuaikan environment sesuai preferensi developer
 - Jalankan pengetesan dengan melakukan "Run Collection" yang telah diimport
 
-![alt text]("https://raw.githubusercontent.com/bungambohlah/dicoding-bookshelf-api/master/screenshots/run_collection.png")
+![alt text](https://raw.githubusercontent.com/bungambohlah/dicoding-bookshelf-api/master/screenshots/run_collection.png)
 
 - Select all and Click "Run the test" button
 
-![alt text]("https://raw.githubusercontent.com/bungambohlah/dicoding-bookshelf-api/master/screenshots/run_test.png")
+![alt text](https://raw.githubusercontent.com/bungambohlah/dicoding-bookshelf-api/master/screenshots/run_test.png)
 
 - Wait until all request is finished
 
@@ -37,7 +38,19 @@ Project ini adalah Submission dari materi [Belajar Membuat Aplikasi Back-End unt
 
 All passed and no any failed tests
 
-![alt text]("https://raw.githubusercontent.com/bungambohlah/dicoding-bookshelf-api/master/screenshots/success_test.png")
+![alt text](https://raw.githubusercontent.com/bungambohlah/dicoding-bookshelf-api/master/screenshots/success_test.png)
+
+## About Me
+
+Hello there 👋🏻, my name is [Afif Abdillah Jusuf](https://github.com/bungambohlah) and I'm a software engineer.
+
+I'm currently working as a [Full Stack Developer](https://linkedin.com/lin/afifjusut).
+
+Graduated from [Politeknik Elektronika Negeri Surabaya](https://pens.ac.id) as Associate Degree in Informatics Engineering.
+
+Nice to meet you.
+
+Visit my personal site at [afif.dev](https://afif.dev).
 
 ## LICENSE
 
